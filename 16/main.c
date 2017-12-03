@@ -4,7 +4,7 @@
 
 static void open_dialog(GApplication *app, gpointer user_data);
 static void read_bin_file(char *filename);
-static void listbox_callback(GApplication *app, gpointer user_data);
+static void listbox_callback(GtkListBox *box, GtkListBoxRow *row, gpointer user_data);
 
 GtkWidget *listbox;
 
@@ -84,11 +84,11 @@ int main(int argc, char *argv[]) {
 
 	listbox = gtk_list_box_new();
 	gtk_list_box_set_selection_mode(GTK_LIST_BOX(listbox), GTK_SELECTION_BROWSE);
-	g_signal_connect(listbox, "activate", G_CALLBACK(listbox_callback), NULL);
 	frame = gtk_frame_new(NULL);
 	scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
 	gtk_container_add(GTK_CONTAINER(frame), scrolledwindow);
 	gtk_container_add(GTK_CONTAINER(scrolledwindow), listbox);
+	g_signal_connect(listbox, "row-activated", G_CALLBACK(listbox_callback), NULL);
 
 	gtk_widget_set_size_request(GTK_WIDGET(frame), 230, 256);
 	gtk_box_pack_start(GTK_BOX(h_outline), frame, TRUE, TRUE, 0);
@@ -196,7 +196,6 @@ static void read_bin_file(char *filename) {
 		gtk_container_add(GTK_CONTAINER(row), label);
 		gtk_container_add(GTK_CONTAINER(listbox), row);
 		
-		g_print("File d: %s\n", asset_name);
 		fseek(fp, ofs + 0x400, SEEK_SET);
 
 	}
@@ -206,7 +205,7 @@ static void read_bin_file(char *filename) {
 
 }
 
-static void listbox_callback(GApplication *app, gpointer user_data) {
+static void listbox_callback(GtkListBox *box, GtkListBoxRow *row, gpointer user_data) {
 
 	g_print("Activate callback\n");
 
