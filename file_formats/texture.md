@@ -1,7 +1,9 @@
 # Texture Image Map
 
 Texture Image Map or "TIM" files are the texture format for the 
-Playstation's memory bugger. Rockman Dash uses this file format
+Playstation's memory bugger. A detailed explanation of their format
+can be found at [this wiki](http://wiki.qhimm.com/view/PSX/TIM_format).
+Rockman Dash uses this file format
 as well, but the file header has been adjusted to use the format
 of the file archive. The table below shows the byte layout for
 how the attributes are defined in the archive.
@@ -21,3 +23,5 @@ As stated in the Archive document, the first dword is defined as
 of the image file in the archive. 
 
 ## Framebuffer
+
+![alt text](https://github.com/kion-dgl/Dash-Texture-Viewer/blob/master/file_formats/fig/frame_buffer.png?raw=true "Framebuffer")
