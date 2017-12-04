@@ -40,6 +40,12 @@ TIM files, pallets may be declared at the offset of
 | 0 | .EBD | Enemy / Environment Polygon Data |
 | 0 | .PBD | Player Polygon Data |
 | 1 | .TIM | "Texture Image Map" |
+|  | .HED | |
+|  | .IDX | |
+|  | .MDT | |
+|  | .SEP | |
+|  | .STG | |
+|  | .VAB | |
 | -1 | NA | End of Archive Signal |
 
 To parse an archive file, the best approach seems to be to iterate over
