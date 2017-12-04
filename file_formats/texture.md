@@ -39,3 +39,24 @@ height is defined at 0x28.
 ## Framebuffer
 
 ![alt text](https://github.com/kion-dgl/Dash-Texture-Viewer/blob/master/file_formats/fig/frame_buffer.png?raw=true "Framebuffer")
+
+## Image Blocks
+
+```
+#define BLOCK_WIDTH 128
+#define BLOCK_HEIGHT 32
+
+uint32_t y, x, by, bx;
+
+for(y = 0; y < height; y+= BLOCK_HEIGHT) {
+	for(x = 0; x < width; x += BLOCK_WIDTH) {
+		for(by = 0; by < BLOCK_HEIGHT; by++) {
+			for(bx = 0; bx < BLOCK_WIDTH; bx++) {
+				fread(&byte, 1, 1, fp);
+				bitmap[((y + by) * width) + (x + bx)] = clut[byte];
+			}
+		}
+	}
+}
+
+```
