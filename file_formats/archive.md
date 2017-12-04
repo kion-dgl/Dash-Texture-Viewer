@@ -28,7 +28,15 @@ archive. Files are organized such that headers appear in offsets of
 The second dword gives the size of the embedded file in bytes. Though for
 some files, this value will not always be correct.
 0x40 - 0x60 gives the filename. The bytes 0x08 through 0x40 will define
-different attributes depending on the file type declared.
-
-In the case of TIM files, pallets may be declared at the offset of
+different attributes depending on the file type declared. In the case of 
+TIM files, pallets may be declared at the offset of
 0x100. The actual data of all of types will start at 0x800. 
+
+## File Types
+
+
+| Type  | Extension | Explanation |
+|------|------|------|
+| 0 | .EBD | Enemy / Environment Polygon Data |
+| 0 | .PBD | Player Polygon Data |
+| 1 | .TIM | "Texture Image Map" |
