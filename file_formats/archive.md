@@ -40,3 +40,10 @@ TIM files, pallets may be declared at the offset of
 | 0 | .EBD | Enemy / Environment Polygon Data |
 | 0 | .PBD | Player Polygon Data |
 | 1 | .TIM | "Texture Image Map" |
+| -1 | NA | End of Archive Signal |
+
+To parse an archive file, the best approach seems to be to iterate over
+a given archive file in incremenets of 0x400, and scan for the "..\"
+string sequence of a filename. From there the data type int value
+and extension value can be crossed referenced to find the best approach to
+handle a given file type.
