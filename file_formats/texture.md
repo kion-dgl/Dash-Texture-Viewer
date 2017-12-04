@@ -14,5 +14,3 @@ how the attributes are defined in the archive.
 | 0x20 | 0000 | Width | Height | 0000 |
 | 0x20 | 0000 | 0000 | 0000 | 0000 |
 | 0x30 | 0000 | 0000 | 0000 | 0000 |
-| 0x40 | ..\O | BJ\S | T03\ | AR00 |
-| 0x50 | B\EM | 0600 | .TIM |      |
