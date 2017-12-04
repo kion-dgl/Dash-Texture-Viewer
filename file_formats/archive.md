@@ -1,4 +1,4 @@
-#Archive Format
+# Archive Format
 
 Most of the files in the game Rockman Dash for Playstation are kept
 in a ".BIN" archive format. The files inside the archive are not
@@ -10,7 +10,7 @@ There are a few files not contained inside of these archives. Which
 seem to be files that are used globally, such as the polygons that
 make up the protagonist, and the texture for the gameover screen.
 
-##Bit Layout
+## Byte Layout
 
 |   Offset   | 0x00 | 0x04 | 0x08 | 0x0C |
 |------|------|------|------|------|
