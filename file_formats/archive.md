@@ -46,6 +46,7 @@ TIM files, pallets may be declared at the offset of
 |  | .SEP | |
 |  | .STG | |
 |  | .VAB | |
+| 9 | .TIM | Stand Alone Color Look up Table |
 | -1 | NA | End of Archive Signal |
 
 To parse an archive file, the best approach seems to be to iterate over
