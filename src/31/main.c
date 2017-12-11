@@ -10,6 +10,9 @@ char active_texture[0x20];
 int active_pallet;
 int order_pallet;
 
+int nb_images;
+GtkWidget *listrows[100];
+
 static void open_dialog(GApplication *app, gpointer user_data);
 static void read_bin_file(char *filename);
 static void listbox_callback(GtkListBox *box, GtkListBoxRow *row, gpointer user_data);
@@ -25,7 +28,6 @@ GtkWidget *listbox;
 GtkWidget *image;
 GtkWidget *frame;
 GtkWidget *v_outline, *h_outline;
-GtkWidget *scrolledwindow;
 
 int main(int argc, char *argv[]) {
 
@@ -36,10 +38,12 @@ int main(int argc, char *argv[]) {
 	GtkWidget *separator;
 	GtkWidget *first, *radio;
 	GSList *list;
+	GtkWidget *scrolledwindow;
 	int i;
 
 	gtk_init(&argc, &argv);
 
+	nb_images = 0;
 	// Set up Window
 
 	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
@@ -97,11 +101,13 @@ int main(int argc, char *argv[]) {
 
 	// Pack Horizontal Outline
 
-	// listbox = gtk_list_box_new();
+	listbox = gtk_list_box_new();
 	gtk_list_box_set_selection_mode(GTK_LIST_BOX(listbox), GTK_SELECTION_BROWSE);
 	frame = gtk_frame_new(NULL);
-	// gtk_container_add(GTK_CONTAINER(scrolledwindow), listbox);
-	// g_signal_connect(listbox, "row-activated", G_CALLBACK(listbox_callback), NULL);
+	scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
+	gtk_container_add(GTK_CONTAINER(frame), scrolledwindow);
+	gtk_container_add(GTK_CONTAINER(scrolledwindow), listbox);
+	g_signal_connect(listbox, "row-activated", G_CALLBACK(listbox_callback), NULL);
 
 	gtk_widget_set_size_request(GTK_WIDGET(frame), 230, 256);
 	gtk_box_pack_start(GTK_BOX(h_outline), frame, TRUE, TRUE, 0);
@@ -163,7 +169,6 @@ static void open_dialog(GApplication *app, gpointer user_data) {
 
 	res = gtk_dialog_run (GTK_DIALOG (dialog));
 	if (res == GTK_RESPONSE_ACCEPT) {
-	
 		char *filename;
 		GtkFileChooser *chooser = GTK_FILE_CHOOSER (dialog);
 		filename = gtk_file_chooser_get_filename (chooser);
@@ -183,23 +188,11 @@ static void read_bin_file(char *filename) {
 	GtkWidget *row, *label;
 	char *dot;
 
-	if(listbox != NULL) {
-		gtk_widget_destroy(GTK_WIDGET(listbox));
-		gtk_widget_destroy(GTK_WIDGET(scrolledwindow));
-	}
-
-	scrolledwindow = gtk_scrolled_window_new(NULL, NULL);
-	gtk_container_add(GTK_CONTAINER(frame), scrolledwindow);
-
-	listbox = gtk_list_box_new();
-	gtk_list_box_set_selection_mode(GTK_LIST_BOX(listbox), GTK_SELECTION_BROWSE);
-	gtk_container_add(GTK_CONTAINER(scrolledwindow), listbox);
-	g_signal_connect(listbox, "row-activated", G_CALLBACK(listbox_callback), NULL);
-
 	FILE *fp;
 	uint32_t type;
 	uint32_t ofs, file_len;
 	char asset_name[0x20];
+	int i;
 
 	fp = fopen(filename, "r");
 	if(fp == NULL) {
@@ -210,6 +203,12 @@ static void read_bin_file(char *filename) {
 	fseek(fp, 0, SEEK_END);
 	file_len = ftell(fp);
 	fseek(fp, 0, SEEK_SET);
+
+	for(i = 0; i < nb_images; i++)  {
+		gtk_container_remove(GTK_CONTAINER(listbox), listrows[i]);
+	}
+
+	nb_images = 0;
 
 	while(ftell(fp) < file_len) {
 
@@ -234,6 +233,8 @@ static void read_bin_file(char *filename) {
 			row = gtk_list_box_row_new();
 			gtk_container_add(GTK_CONTAINER(row), label);
 			gtk_container_add(GTK_CONTAINER(listbox), row);
+			listrows[nb_images] = row;
+			nb_images++;
 		}
 
 		fseek(fp, ofs + 0x400, SEEK_SET);
@@ -241,7 +242,6 @@ static void read_bin_file(char *filename) {
 	}
 	
 	gtk_widget_show_all (listbox);
-	gtk_widget_show_all(frame);
 	fclose(fp);
 
 }
