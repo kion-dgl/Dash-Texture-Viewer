@@ -43,6 +43,25 @@ each version of the code. So "00", is the eariliest version, "36" or later is th
 version. As this was my first attempt at making a general purpose GTK application I
 separated out all of the steps as a reference for how the UI was tested and built.
 
+### Building the Code
+
+Not sure how to build this on Windows or Mac, nor do I intend to release a binary,
+as the purpose of this software is more for educational purposes than end-user software.
+To compile on Ubuntu / Debian based systems install the dependencies with 
+
+```
+$ sudo apt-get install libgtk-3-dev libpng-dev git make
+```
+
+And then compile and run with:
+
+```
+$ git clone https://github.com/kion-dgl/Dash-Texture-Viewer.git
+$ cd Dash-Texture-Viewer/src/36
+$ make
+$ ./a.out
+```
+
 ### License
 
 Copyright (C) 2017  Benjamin Collins [DashGL Project](https://dashgl.com)
