@@ -24,11 +24,11 @@ of the image file in the archive. The following dword at 0x08 has
 the value of either 0x0A or 0x12, but it's unknown what it's functionality
 at this time.  
 
-The dword at 0x0C is the framebuffer pallet X, and the dword at 0x10 is the
-framebuffer pallet Y. At 0x14 is the number of pallet colors, which can be
+The dword at 0x0C is the framebuffer palette X, and the dword at 0x10 is the
+framebuffer palette Y. At 0x14 is the number of palette colors, which can be
 0x10 for 16 colors (4 bit indexed) or 0x100 for 256 colors (8 bit indexed).
-The dword at 0x18 is the number of pallets. These pallets are used to swap 
-out pallets for different types of enemies, or used to adjust lighting levels. 
+The dword at 0x18 is the number of palettes. These palettes are used to swap 
+out palettes for different types of enemies, or used to adjust lighting levels. 
 
 The dword at 0x1C is the Image buffer X, and 0x20 is Image buffer Y. The dword
 at 0x24 is the width as defined in words. So if the Number of Pallet colors
