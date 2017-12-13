@@ -45,7 +45,7 @@ separated out all of the steps as a reference for how the UI was tested and buil
 
 ### License
 
-Copyright (C) 2017  Benjamin Collins
+Copyright (C) 2017  Benjamin Collins [DashGL Project](https://dashgl.com)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
