@@ -8,11 +8,11 @@ From there, choose a ".BIN" file from the game disk. The names of all of the
 textures in the scene will be displayed in the listbox area on the left.
 
 To preview a texture, click on it. Each texture is comprised of an image body
-and a pallet. The number of pallets for each texture are displayed as radio
+and a palette. The number of palettes for each texture are displayed as radio
 buttons on the right. To cycle through the textures for a given file, click
 on each radio button. 
 
-The current texture preview with pallet selected can be exported to a PNG file.
+The current texture preview with palette selected can be exported to a PNG file.
 With a texture selected, click the dropdown menu in the upper left and select
 "Export" from the menu. You will be prompted to select a save location for the
 PNG file.
