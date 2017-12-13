@@ -38,11 +38,6 @@ folder. Command line tools for exporting TIM files from a Rockman Dash ".BIN" fi
 are included in the "tools" folder if you want to port the functionality to another
 language / libary combination.  
 
-The code for the user interface is included in the "src" folder. A number is kept for
-each version of the code. So "00", is the eariliest version, "36" or later is the last
-version. As this was my first attempt at making a general purpose GTK application I
-separated out all of the steps as a reference for how the UI was tested and built.
-
 ### Building the Code
 
 Not sure how to build this on Windows or Mac, nor do I intend to release a binary,
@@ -57,7 +52,7 @@ And then compile and run with:
 
 ```
 $ git clone https://github.com/kion-dgl/Dash-Texture-Viewer.git
-$ cd Dash-Texture-Viewer/src/36
+$ cd Dash-Texture-Viewer/src/
 $ make
 $ ./a.out
 ```
